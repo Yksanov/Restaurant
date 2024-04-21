@@ -1,0 +1,60 @@
+﻿@model Product
+@using Restoraunt.BrainTree
+
+<form method="post" asp-action="Delete">
+    <input asp-for="Id" hidden />
+    <div class="border p-3">
+        <div class="form-group row">
+            <h2 class="text-danger">Delete Product</h2>
+            <hr />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Name"></label>
+            <input asp-for="Name" class="form-control" readonly />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Price"></label>
+            <input asp-for="Price" class="form-control" readonly />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Description"></label>
+            <textarea asp-for="Description" class="form-control summernote" readonly></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="CategoryId"></label>
+            <input asp-for="Category.Name" class="form-control" readonly />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="ApplicationTypeId"></label>
+            <input asp-for="ApplicationType.Name" class="form-control" readonly />
+        </div>
+
+        <div class="row">
+            <div class="col-8 offset-4">
+                <button type="submit" class="btn btn-danger" style="width:150px" onclick="return confirm('Вы уверены, что хотите удалить этот продукт?')">Удалить</button>
+                <a asp-action="Index" class="btn btn-secondary" style="width:150px">
+                    <i class="bi bi-backspace-fill"></i>
+                    Назад
+                </a>
+            </div>
+        </div>
+    </div>
+</form>
+     @section Scripts {
+        @{
+            <partial name="_ValidationScriptsPartial" />
+        }
+       <script>
+            $(document).ready(function () {
+                $('.summernote').summernote({
+                    height: 250,
+                    disable: true
+                });
+            });
+        </script>
+    }

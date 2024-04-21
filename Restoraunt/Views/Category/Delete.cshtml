@@ -1,0 +1,24 @@
+﻿@model Category
+
+<form method="post" asp-action="DeletePost">
+    <input asp-for="Id" hidden />
+    <div class="border p-3 mt-4">
+        <div class="pb-2">
+            <h2 class="text-danger">Delete Category</h2>
+            <hr />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Name"></label>
+            <input asp-for="Name" class="form-control" readonly />
+        </div>
+        <div class="mb-3">
+            <label asp-for="DisplayOrder"></label>
+            <input asp-for="DisplayOrder" class="form-control" readonly />
+        </div>
+        <button type="submit" class="btn btn-danger" style="width:150px" onclick="return confirm('Вы уверены, что хотите удалить эту категорию?')">Удалить</button>
+        <a asp-controller="Category" asp-action="Index" class="btn btn-secondary" style="width:150px">
+            <i class="bi bi-backspace-fill"></i>
+            Назад
+        </a>
+    </div>
+</form>
